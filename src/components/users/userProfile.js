@@ -42,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function UserImage({ id }) {
+const MemoizedUserImage = React.memo(({ id }) => {
+  const classes = useStyles();
+
   let imageUrl = "";
   const { images } = useSelector((state) => state.users);
 
@@ -56,12 +58,12 @@ function UserImage({ id }) {
 
   return (
     <>
-      <img alt="User Image" src={imageUrl} />
+      <img className={classes.img} src={imageUrl} alt="User Image" />
     </>
   );
-}
+});
 
-function UserProfile(user) {
+const MemoizedUserProfile = React.memo((user) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [formUser, setFormUser] = useState(user);
@@ -101,7 +103,7 @@ function UserProfile(user) {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <UserImage {...user} />
+              <MemoizedUserImage {...user} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
@@ -211,7 +213,7 @@ function UserProfile(user) {
       </Paper>
     </div>
   );
-}
+});
 
 function ReadonlyTextField({ label, value }) {
   const classes = useStyles();
@@ -233,13 +235,13 @@ function UsersGrid(users) {
   return (
     <>
       {Object.values(users).map((user) => (
-        <UserProfile key={user.id} {...user} />
+        <MemoizedUserProfile key={user.id} {...user} />
       ))}
     </>
   );
 }
 
-UserProfile.propTypes = {
+MemoizedUserProfile.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   username: PropTypes.string,
