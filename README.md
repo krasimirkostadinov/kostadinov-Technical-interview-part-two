@@ -27,6 +27,13 @@ Installation:
   ```
   2. run ```yarn install```
   3. run ```yarn start```
+  
+ Future improvements:
+ -------------------
+ - add cancelable promise fetch
+ - merge images to users redux state
+ - PropTypes.exact({}) for `UserProfile` and `UserImage` components
+ - add tests
 
 Project preview:
 ----------------
