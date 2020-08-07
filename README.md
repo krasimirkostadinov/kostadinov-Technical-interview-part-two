@@ -30,5 +30,4 @@ Installation:
 
 Project preview:
 ----------------
-  Video demo
-  
+  ![Demo Video](/public/demo/egt-demo.mkv "Demo video")
