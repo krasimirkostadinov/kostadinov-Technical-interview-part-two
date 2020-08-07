@@ -45,7 +45,6 @@ export function getImagesCompleted(images) {
 }
 
 export function updateUserData(userData) {
-  console.log("updateUserData", userData);
   return {
     type: "UPDATE_USER",
     data: userData,
